@@ -9,6 +9,10 @@
     <el-button type="success" plain size="large" @click="initMap">创建地图</el-button>
     <el-button type="warning" plain size="large" @click="destroyMap">销毁地图</el-button>
   </el-row>
+  <el-row :gutter="20" class="el_row el_row1">
+    <el-input class="put" v-model="toAddress" placeholder="" size="normal" clearable></el-input>
+    <el-button type="success" plain size="large" @click="gotoCity">去指定城市</el-button>
+  </el-row>
 </template>
 
 <script setup>
@@ -20,8 +24,7 @@
     securityJsCode: '397512977dc3664949dd96d9ed8b768e'
   }
 
-  const msg = ref('from map')
-  msg.value = 'map from'
+  const toAddress = ref('北京市')
 
   let map = shallowRef(null)
   let loca = shallowRef(null)
@@ -40,6 +43,8 @@
         zoom: 12,
         center: [104.065722, 30.657511],
         viewMode: '2D', //查看视野
+        // showIndoorMap: false //关闭室内地图
+        // resizeEnable: true, //是否监控地图容器尺寸变化
       })
 
       map.addControl(new AMap.Scale())
@@ -78,6 +83,16 @@
     let { lnglat } = e
     let [lng, lat] = [ lnglat.getLng(), lnglat.getLat() ]
     console.log( '拾取到的经纬度:', lng, lat )
+
+    map.getCity( info => {
+      console.log( '地图中心的行政区', JSON.stringify(info))
+    })
+  }
+
+  const gotoCity = () => {
+    // toAddress 的值可以是 cityname、adcode、citycode
+    if ( !toAddress.value ) return tips('warning', 'cityname、adcode、citycode')
+    map.setCity(toAddress.value)
   }
 
   const mapComplete = () => {
@@ -101,6 +116,13 @@
     console.log('地图已销毁')
   }
 
+  const tips = (type, message) => {
+    ElMessage({
+      type,
+      message
+    })
+  }
+
   onMounted( () => {
     initMap()
   })
@@ -122,6 +144,11 @@
     // map.on('dragging', fun)
     // map.on('dragend', fun)
 
+    // 设置地图中心/缩放级别
+    // map.setCenter([lng, lat])
+    // map.setZoom(Number)
+    // map.setZoomAndCenter(Number, [lng, lat])
+
     console.log('页面卸载.')
   })
 
@@ -138,5 +165,11 @@
     bottom: 0;right: 150px;
     margin-left: unset!important;
     margin-right: unset!important;
+  }
+  .el_row1{
+    bottom: 60px;
+    .put {
+      width: 150px;
+    }
   }
 </style>

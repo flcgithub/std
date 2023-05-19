@@ -8,6 +8,7 @@
       "@style/*": ["./src/style/*"],
       "@views/*": ["./src/views/*"]
     },
+    "types": ["element-plus/global"]
   },
   "exclude": ["node_modules", "dist"]
 }
