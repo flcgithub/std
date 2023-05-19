@@ -15,7 +15,7 @@ const router = createRouter({
     {
       path: '/map',
       name: 'Map',
-      component: () => import('@views/map/map.vue')
+      component: () => import('@views/map/Map.vue')
     }
   ],
   history: createWebHistory()
