@@ -11,13 +11,18 @@ const router = createRouter({
       path: '/apple',
       name: 'Apple',
       component: () => import('@comp/Apple.vue')
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: () => import('@views/map/map.vue')
     }
   ],
   history: createWebHistory()
 })
 
 router.beforeEach((to, from, next) => {
-  if ( !to.name ) next({ name: 'Hellow' })
+  if ( !to.name ) next({ name: 'Map' })
   else next()
 })
 

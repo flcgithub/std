@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div id="apple">
+    <span>apple</span>
+    <span>flcT</span>
     {{ pCount }}==={{ updateCount }}
   </div>
 </template>
@@ -9,6 +11,8 @@
   import { storeToRefs } from 'pinia'
 
   const pinia = usePinia()
+
+  console.log('why here')
 
   const { pCount, updateCount } = storeToRefs(pinia)
 </script>

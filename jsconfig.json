@@ -6,6 +6,7 @@
       "@img/*": ["./src/assets/images/*"],
       "@comp/*": ["./src/components/*"],
       "@style/*": ["./src/style/*"],
+      "@views/*": ["./src/views/*"]
     },
   },
   "exclude": ["node_modules", "dist"]

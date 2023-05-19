@@ -15,6 +15,7 @@ export default defineConfig({
       '@img': resolve(__dirname, './src/assets/images'),
       '@comp': resolve(__dirname, './src/components'),
       '@style': resolve(__dirname, './src/style'),
+      '@views': resolve(__dirname, './src/views')
     }
   },
   css: {
