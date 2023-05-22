@@ -1,10 +1,9 @@
 <template>
-
+  <Map />
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-
+  import Map from '@/views/map/Map.vue'
 </script>
 
 <style lang='scss' scoped>

@@ -6,7 +6,8 @@
       "@img/*": ["./src/assets/images/*"],
       "@comp/*": ["./src/components/*"],
       "@style/*": ["./src/style/*"],
-      "@views/*": ["./src/views/*"]
+      "@views/*": ["./src/views/*"],
+      "@utils/*": ["./src/utils/*"],
     },
     "types": ["element-plus/global"]
   },

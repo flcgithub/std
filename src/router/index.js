@@ -16,13 +16,18 @@ const router = createRouter({
       path: '/map',
       name: 'Map',
       component: () => import('@views/map/Map.vue')
+    },
+    {
+      path: '/homePage',
+      name: 'HomePage',
+      component: () => import('@views/homePage/Index.vue')
     }
   ],
   history: createWebHistory()
 })
 
 router.beforeEach((to, from, next) => {
-  if ( !to.name ) next({ name: 'Map' })
+  if ( !to.name ) next({ name: 'HomePage' })
   else next()
 })
 
